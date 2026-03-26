@@ -8,6 +8,8 @@
       git:
         repo: https://github.com/rishuagrawal1309/Microservices-Practice.git
         dest: /tmp/microservices
+        version: main
+        force: yes
       ignore_errors: yes
 
     - name: Copy project files
