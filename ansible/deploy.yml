@@ -1,0 +1,21 @@
+- name: Deploy Microservices App
+  hosts: localhost
+  become: false
+
+  tasks:
+
+    - name: Pull latest code (optional)
+      git:
+        repo: https://github.com/rishuagrawal1309/Microservices-Practice.git
+        dest: /tmp/microservices
+      ignore_errors: yes
+
+    - name: Copy project files
+      copy:
+        src: ../
+        dest: /tmp/microservices
+
+    - name: Run Docker Compose
+      command: docker-compose up --build -d
+      args:
+        chdir: /tmp/microservices

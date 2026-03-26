@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - addition
+      - multiplication
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5001:5000"
+    depends_on:
+      - addition
+      - multiplication
+
+  addition:
+    build: ./addition
+    ports:
+      - "5002:5000"
+
+  multiplication:
+    build: ./multiplication
+    ports:
+      - "5003:5000"
