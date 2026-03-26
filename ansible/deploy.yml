@@ -4,13 +4,10 @@
 
   tasks:
 
-    - name: Pull latest code (optional)
-      git:
-        repo: https://github.com/rishuagrawal1309/Microservices-Practice.git
-        dest: /tmp/microservices
-        version: main
-        force: yes
-      ignore_errors: yes
+    - name: Remove old project
+      file:
+        path: /tmp/microservices
+        state: absent
 
     - name: Copy project files
       copy:
